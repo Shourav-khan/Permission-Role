@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -23,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $role = Role::all();
+        return view('users.create', compact('role'));
     }
 
     /**

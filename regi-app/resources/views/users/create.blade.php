@@ -48,6 +48,15 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
 
+                        <select class="form-select mt-3" aria-label="Default select example" multiple>
+                          <option selected>Select Role --</option>
+                          @foreach($role as $rol)
+                          <option value="{{$rol->id}}">{{$rol->name}}</option>
+                          @endforeach
+                         
+                        
+                        </select>
+
                           </div>
                       
                           <div class="flex justify-center">
