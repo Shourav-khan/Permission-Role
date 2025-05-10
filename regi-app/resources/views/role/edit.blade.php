@@ -24,7 +24,26 @@
                     @error('name')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
-                  </div>         
+                  </div>       
+                  
+                  <div class="form-check"> <h5 style="font-size: 30px">Permissions: </h5>
+                    @foreach ($permissions as $per)
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="checkbox" 
+                          name="permissions[{{$per->name}}]" 
+                          value="{{ $per->name }}" 
+                          id="permission_{{ $per->id }}" 
+                          {{$role->hasPermissionTo($per->name) ? 'checked' : ''}}
+                          
+                         >
+                        <label class="form-check-label" for="permission_{{ $per->id }}">
+                          {{ $per->name }}
+                        </label>
+                      </div>
+                    @endforeach
+                  </div>
              
               <div class="flex justify-center">
                 <button type="submit" class="btn btn-danger">Update</button>

@@ -17,8 +17,14 @@
             <input type="text" class="form-control" id="validationDefault01" value="{{$role->name}}" readonly>
           </div>
 
-          
 
+          <div>
+            <h5 class="mt-4">PErmissions (Name): </h5>
+            @foreach ($role->permissions as $permission)
+            <p>{{$permission->name}}</p>         
+            @endforeach
+          </div>
+         
             
 
           </div>

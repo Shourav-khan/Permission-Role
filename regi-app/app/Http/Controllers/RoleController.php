@@ -34,7 +34,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
 
-        
+        // dd($request->all());
 
         $request->validate([
             "name" => "required"
@@ -65,7 +65,8 @@ class RoleController extends Controller
     public function edit(string $id)
     {
         $role = Role::find($id);
-        return view('role.edit', compact('role'));
+        $permissions = Permission::all();
+        return view('role.edit', compact('role','permissions'));
     }
 
     /**
@@ -82,6 +83,8 @@ class RoleController extends Controller
         $role->name = $request->name;
 
         $role->save();
+
+        $role->syncPermissions($request->permissions);
 
         return redirect()->route('roles.index');
     }

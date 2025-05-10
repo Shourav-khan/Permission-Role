@@ -39,7 +39,7 @@
                             @endforeach
                         </div> --}}
 
-                        <div class="form-check">
+                        <div class="form-check"> <h1 style="font-size: 30px">Permissions: </h1>
                             @foreach ($permissions as $per)
                               <div class="form-check">
                                 <input 
