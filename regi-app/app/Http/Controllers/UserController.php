@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 
+
 class UserController extends Controller
 {
     /**
@@ -34,19 +35,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
             "name"=>"required",
             "email"=>"required|email",
             "password"=>"required"
         ]);
 
-        User::create([
+       $user = User::create([
             "name" => $request->name,
             "email" => $request->email,
             "password" => Hash::make($request->password) 
         ]);
 
-        return redirect()->route('allUsers.index')->with("success","User Created");
+                $user->syncRoles($request->role);
+
+            return redirect()->route('allUsers.index')->with("success","User Created");
 
     }
 

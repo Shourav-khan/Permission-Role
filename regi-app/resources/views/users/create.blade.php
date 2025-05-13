@@ -48,13 +48,11 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
 
-                        <select class="form-select mt-3" aria-label="Default select example" multiple>
+                        <select class="form-select mt-3" aria-label="Default select example" name="role[]" multiple>
                           <option selected>Select Role --</option>
                           @foreach($role as $rol)
-                          <option value="{{$rol->id}}">{{$rol->name}}</option>
-                          @endforeach
-                         
-                        
+                          <option value="{{$rol->name}}">{{$rol->name}}</option>
+                          @endforeach                  
                         </select>
 
                           </div>
